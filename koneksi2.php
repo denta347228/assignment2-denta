@@ -70,35 +70,7 @@ function deleteData($id, $conn)
 }
 
 // Fungsi untuk memperbarui data berdasarkan ID
-function update($id, $conn)
-{
-    if ($id) {
-        $row = get($id, $conn);
-        if ($row) {
-            $nama = $row["nama"];
-            $role = $row["role"];
-            $avaibility = $row["avaibility"];
-            $age = $row["age"];
-            $lokasi = $row["lokasi"];
-            $year = $row["yearex"];
-            $email = $row["email"];
 
-            // Prepare the SQL statement
-            $sql = "UPDATE data SET nama = ?, `role` = ?, avaibility = ?, age = ?, lokasi = ?, `yearex` = ?, email = ? WHERE id = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssssssi", $nama, $role, $avaibility, $age, $lokasi, $year, $email, $id);
-
-            if ($stmt->execute()) {
-                echo "Data berhasil diperbarui.";
-            } else {
-                echo "Error: " . $stmt->error;
-            }
-
-            $stmt->close();
-        }
-    }
-
-}
 
 
 function validateInput($field, $type = 'string', $minLength = 0)
